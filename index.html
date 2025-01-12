@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Nida ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Name verification card -->
+        <div id="nameCard" class="card">
+            <h2>Please Enter Your Name</h2>
+            <input type="text" id="nameInput" placeholder="Enter name...">
+            <button onclick="checkName()">Enter</button>
+            <p id="errorMsg" class="error-msg"></p>
+        </div>
+
+        <!-- Birthday message card (initially hidden) -->
+        <div id="birthdayCard" class="card hidden">
+            <div class="heart"></div>
+            <h1>Happy Birthday Sayang! ❤️</h1>
+            <div id="typingText" class="typing-text"></div>
+            <audio id="bgMusic" loop>
+                <source src="music/hbd.mp3" type="audio/mp3">
+            </audio>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
