@@ -5,7 +5,6 @@ function checkName() {
     .trim();
   const validNames = ["nida", "nida khansa", "nida khansa fauziah"];
 
-  // Jika input kosong
   if (!nameInput) {
     Swal.fire({
       title: "Oops!",
@@ -16,7 +15,6 @@ function checkName() {
     return;
   }
 
-  // Jika nama benar
   if (validNames.includes(nameInput)) {
     Swal.fire({
       title: "Yay! Welcome My Love! ❤️",
@@ -25,16 +23,21 @@ function checkName() {
       confirmButtonColor: "#ff6b6b",
     }).then((result) => {
       if (result.isConfirmed) {
-        document.getElementById("nameCard").classList.add("hidden");
-        document.getElementById("birthdayCard").classList.remove("hidden");
+        const nameCard = document.getElementById("nameCard");
+        const birthdayCard = document.getElementById("birthdayCard");
+
+        // Hide name card and show birthday card
+        nameCard.classList.add("hidden");
+        birthdayCard.classList.remove("hidden");
+
+        // Start typing animation, floating hearts, and play music
         startTypingAnimation();
-        // Mulai memutar musik
+        startFloatingHearts();
         const bgMusic = document.getElementById("bgMusic");
         bgMusic.play();
       }
     });
   } else {
-    // Jika nama salah
     Swal.fire({
       title: "Access Denied!",
       text: "You're not my girlfriend! 😤",
@@ -48,17 +51,21 @@ function checkName() {
 function startTypingAnimation() {
   const text = `Dear Nida,
 
-I want to take this moment to wish you the happiest of birthdays! 🎉
+On your special day, I want to take a moment to celebrate you, the most wonderful person in my life. 🎉
 
-Every day with you is a gift, and I'm grateful for all the beautiful moments we share together. Your smile brightens my world, and your love makes every day special.
+Every day with you feels like a gift, and I'm endlessly grateful for all the memories we've created together. Your smile lights up my world, your love fills my heart, and your presence makes every moment extraordinary.
 
-May this year bring you all the joy, success, and happiness you deserve. You're not just my girlfriend, you're my best friend, my support system, and my favorite person.
+I'll always cherish the little things, like the way you laugh when I tell silly jokes or how your eyes light up when we talk about our dreams. May this year bring you closer to everything you hope for, and may your days be filled with boundless joy, remarkable achievements, and endless love.
 
-I love you more with each passing day! ❤️
+You are not just my girlfriend, you are my best friend, my inspiration, and my everything.  
+With every passing day, my love for you grows stronger. ❤️
 
-Happy Birthday, sweetheart! 🎂✨
+Happy Birthday, my sweetheart! You mean the world to me. 🎂✨
 
-From your Boyfriend, Gilvan`;
+No matter what happens, I'll always be here for you, cheering for your successes and holding your hand through every challenge. I love you, now and always.  
+
+Forever yours,  
+Gilvan`;
 
   const typingText = document.getElementById("typingText");
   let index = 0;
@@ -71,11 +78,32 @@ From your Boyfriend, Gilvan`;
         typingText.innerHTML += text[index];
       }
       index++;
-      setTimeout(type, 50);
+      setTimeout(type, 80);
     }
   }
 
   type();
+}
+
+function startFloatingHearts() {
+  const maxHearts = 5;
+  const interval = setInterval(() => {
+    if (document.querySelectorAll(".floating-heart").length < maxHearts) {
+      createHeart();
+    }
+  }, 4000);
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.innerHTML = "❤️";
+  heart.classList.add("floating-heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+
+  heart.addEventListener("animationend", () => {
+    heart.remove();
+  });
 }
 
 function shakeInput() {
@@ -84,7 +112,6 @@ function shakeInput() {
   setTimeout(() => input.classList.remove("shake"), 500);
 }
 
-// Event listener untuk tombol Enter
 document
   .getElementById("nameInput")
   .addEventListener("keypress", function (event) {

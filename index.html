@@ -6,6 +6,7 @@
     <title>Happy Birthday Nida ❤️</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -17,10 +18,11 @@
             <p id="errorMsg" class="error-msg"></p>
         </div>
 
-        <!-- Birthday message card (initially hidden) -->
-        <div id="birthdayCard" class="card hidden">
+        <!-- Main birthday card (initially hidden) -->
+        <div id="birthdayCard" class="card birthday-card hidden">
+            <div id="hearts-container"></div>
             <div class="heart"></div>
-            <h1>Happy Birthday Sayang! ❤️</h1>
+            <h1>Happy Birthday Sayang!</h1>
             <div id="typingText" class="typing-text"></div>
             <audio id="bgMusic" loop>
                 <source src="music/hbd.mp3" type="audio/mp3">
